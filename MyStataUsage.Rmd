@@ -1,0 +1,49 @@
+---
+title: "My Stata usage isn't what it used to be"
+author: "Gabi Huiber"
+date: "Thursday, September 11, 2014"
+output: html_document
+---
+
+In the fall of 2011 I took [Gov-2001](http://projects.iq.harvard.edu/gov2001/) online. It used [R](http://cran.r-project.org/) for applications and homework. That was my chance to use R for real work after having dabbled in it briefly in 2007. Then in the fall of 2012 I took Computing for Data Analysis -- now [R Programming](https://www.coursera.org/course/rprog) --on Coursera. That is when I started using R more, and [Stata](http://www.stata.com/) less, for both work and my own tinkering.
+
+My Stata profile.do file starts a command log every time I fire up Stata. This command log has the date in its name, and it can sit there quietly and record stuff I do at the Stata command line for days if I don't shut down the computer or close Stata. These command logs are saved in `data/cmdlogs` on the computers where I have Stata installed -- my work PC and my own Mac.
+
+So, a simple `dir` or `ls` on this directory, with the output redirected to a file, will give me a pretty good idea of my Stata usage history over the years since 2011, which is when I started keeping tabs on my current computers. Unfortunately, this history doesn't look too good for Stata.
+
+```{r, echo=FALSE, results='hide'}
+library(data.table)
+library(ggplot2)
+stata.at.work <- fread('stata cmdlogs at work table.txt')
+stata.on.mac  <- fread('stata on mac cmdlogs table.txt')
+stata.at.work[,bytes:=as.integer(gsub(',','',bytes))]
+stata.at.work[,date:=as.Date(date,'%d-%b-%y')]
+stata.on.mac[,date:=as.Date(date,'%d-%b-%y')]
+setkey(stata.at.work,date)
+setkey(stata.on.mac,date)
+
+# assemble for ggplot2
+stata <- rbind(stata.at.work[,where:='On work PC'],stata.on.mac[,where:='On own Mac'])
+```
+
+My logs get shorter over time. Below is a tabulation of mean log sizes, by year:
+
+```{r, echo=FALSE}
+# Mean size of logs by year
+stata[,list(bytes=mean(bytes)),by=list(where,year(date))]
+```
+
+And I open fewer of them every year. Below are counts of logs open by year:
+
+```{r, echo=FALSE}
+# Count of logs by year
+table(year(stata$date),stata$where)
+```
+
+Here's an actual timeline. The very large spikes correspond to logs that stayed open for many days, whenever instead of shutting down the computer I just let it sleep, with Stata on. I used to tinker a lot with Stata on my own time, but in 2012 I also had a good stretch where I got to use my own Mac for work. This is not allowed as often as this plot might suggest; I was just in a special set of circumstances where I used a lot of simulated data, so there were no infosec concerns on the client's side.
+
+```{r, echo=FALSE}
+ggplot(data=stata, aes(x=date, y=bytes, group=where, colour=where)) + geom_line()
+```
+
+I don't use Stata much anymore. I still like it and I still feel kinship with Stata users, but my customers want their work done in R. This is not what I expected when I started this job, four years ago next week. At the time, the most likely tool of my trade was going to be SAS.
