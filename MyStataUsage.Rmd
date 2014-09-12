@@ -5,7 +5,7 @@ date: "Thursday, September 11, 2014"
 output: html_document
 ---
 
-In the fall of 2011 I took [Gov-2001](http://projects.iq.harvard.edu/gov2001/) online. It used [R](http://cran.r-project.org/) for applications and homework. That was my chance to use R for real work after having dabbled in it briefly in 2007. Then in the fall of 2012 I took Computing for Data Analysis -- now [R Programming](https://www.coursera.org/course/rprog) --on Coursera. That is when I started using R more, and [Stata](http://www.stata.com/) less, for both work and my own tinkering.
+In the fall of 2011 I took [Gov-2001](http://projects.iq.harvard.edu/gov2001/) online. It used [R](http://cran.r-project.org/) for applications and homework. That was my chance to use R for real work after having dabbled in it briefly in 2007. Then in the fall of 2012 I took Computing for Data Analysis -- now [R Programming](https://www.coursera.org/course/rprog) -- on Coursera. That is when I started using R more, and [Stata](http://www.stata.com/) less, both at work and at home.
 
 My Stata profile.do file starts a command log every time I fire up Stata. This command log has the date in its name, and it can sit there quietly and record stuff I do at the Stata command line for days if I don't shut down the computer or close Stata. These command logs are saved in `data/cmdlogs` on the computers where I have Stata installed -- my work PC and my own Mac.
 
@@ -40,10 +40,10 @@ And I open fewer of them every year. Below are counts of logs open by year:
 table(year(stata$date),stata$where)
 ```
 
-Here's an actual timeline. The very large spikes correspond to logs that stayed open for many days, whenever instead of shutting down the computer I just let it sleep, with Stata on. I used to tinker a lot with Stata on my own time, but in 2012 I also had a good stretch where I got to use my own Mac for work. This is not allowed as often as this plot might suggest; I was just in a special set of circumstances where I used a lot of simulated data, so there were no infosec concerns on the client's side.
+Here's an actual timeline. The very large spikes correspond to logs that stayed open for many days, whenever instead of shutting down the computer I just let it sleep, with Stata on. I used to tinker a lot with Stata on my own time, but in 2012 I also had a good stretch where I got to use my own Mac for work. This is not allowed as often as this plot might suggest; this was a job where I used a lot of simulated data, so the client had no information security concerns.
 
 ```{r, echo=FALSE}
 ggplot(data=stata, aes(x=date, y=bytes, group=where, colour=where)) + geom_line()
 ```
 
-I don't use Stata much anymore. I still like it and I still feel kinship with Stata users, but my customers want their work done in R. This is not what I expected when I started this job, four years ago next week. At the time, the most likely tool of my trade was going to be SAS.
+I don't use Stata much anymore. I still like it and I still feel kinship with Stata users, but my customers want their work done in R. This is not what I expected when I started this job, four years ago next week. At the time I was guessing that I would have to switch to SAS.
