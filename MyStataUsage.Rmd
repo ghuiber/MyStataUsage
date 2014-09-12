@@ -5,7 +5,19 @@ date: "Thursday, September 11, 2014"
 output: html_document
 ---
 
-In the fall of 2011 I took [Gov-2001](http://projects.iq.harvard.edu/gov2001/) online. It used [R](http://cran.r-project.org/) for applications and homework. That was my chance to use R for real work after having dabbled in it briefly in 2007. Then in the fall of 2012 I took Computing for Data Analysis -- now [R Programming](https://www.coursera.org/course/rprog) -- on Coursera. That is when I started using R more, and [Stata](http://www.stata.com/) less, both at work and at home.
+## My programming life
+
+I learned [Stata](http://www.stata.com/) in 2000 for a job as a teaching assistant for an econometrics class at Clemson. I used it on my first full-time job at UPS, for writing my dissertation, and even for [parenting my first-born](http://enoriver.net/index.php/2009/08/30/parenting-with-stata/). I liked Stata a lot.
+
+In the winter of 2007 I dabbled briefly in [R](http://cran.r-project.org/) and abandoned it because I could see no advantage over Stata for anything that I was doing at the time. Then between 2008 and 2010 I took some [CS classes at NCSU](http://engineeringonline.ncsu.edu/PS/CPC.html). Those changed my thinking about how to organize computer programs. [Data structures](http://www2.acs.ncsu.edu/reg_records/crs_cat/CSC.html#CSC 316) was particularly enlightening and gave me an appreciation for [Mata](http://www.stata.com/features/matrix-programming-mata/). 
+
+In the fall of 2011 I took one of the very first MOOC's in history: a machine learning class from Stanford Online that went on to be one of the first offerings on Coursera. This class used [Octave](http://www.gnu.org/software/octave/) for programming, which struck me as similar to Mata, but more expressive (I know that this is a matter of taste). I liked Octave a lot.
+
+In the spring of 2012 I took [Gov-2001](http://projects.iq.harvard.edu/gov2001/). It used R for applications and homework. It struck me that R was like Mata -- by now you should see a pattern -- but quicker to get to and with far better public support on StackOverflow. By summer of that year my programming was about evenly split between R and Stata, I'd guess.
+
+Then in the fall of 2012 I took Computing for Data Analysis -- now [R Programming](https://www.coursera.org/course/rprog) -- on Coursera. That is when I started using R more, and Stata less, both at work and at home.
+
+## The current state of my Stata use
 
 My Stata profile.do file starts a command log every time I fire up Stata. This command log has the date in its name, and it can sit there quietly and record stuff I do at the Stata command line for days if I don't shut down the computer or close Stata. These command logs are saved in `data/cmdlogs` on the computers where I have Stata installed -- my work PC and my own Mac.
 
@@ -46,4 +58,4 @@ Here's an actual timeline. The very large spikes correspond to logs that stayed 
 ggplot(data=stata, aes(x=date, y=bytes, group=where, colour=where)) + geom_line()
 ```
 
-I don't use Stata much anymore. I still like it and I still feel kinship with Stata users, but my customers want their work done in R. This is not what I expected when I started this job, four years ago next week. At the time I was guessing that I would have to switch to SAS.
+I don't use Stata much anymore. I miss it a little and I still feel kinship with Stata users, but my customers want their work done in R. This is not what I expected when I started this job, four years ago next week. At the time I was guessing that I would have to switch to SAS. 
